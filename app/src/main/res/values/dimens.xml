@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="marginToScreen">4dp</dimen>
+    <dimen name="marginToEditText">8dp</dimen>
+    <dimen name="heightPictureBlazon">80dp</dimen>
+    <dimen name="marginRadio">10dp</dimen>
+    <dimen name="heightQuestion">140dp</dimen>
+    <dimen name="firstImageMarginRight">30dp</dimen>
+</resources>

@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:id="@+id/EditText_NameInput"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="@dimen/marginToScreen"
+        android:orientation="vertical">
+
+
+        <EditText
+            android:id="@+id/nameInput"
+            style="@style/EditTextStyle"
+            android:hint="@string/inputName"
+            android:inputType="textCapWords" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/marginToEditText"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/welcomeText"
+                android:layout_width="0dp"
+                android:layout_weight="2"
+                android:text="@string/welcomeText" />
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="@dimen/heightPictureBlazon"
+                android:layout_weight="1"
+                android:scaleType="fitCenter"
+                android:src="@drawable/wappen" />
+
+        </LinearLayout>
+
+        <View style="@style/separationBar" />
+
+
+        <TextView
+            style="@style/quizQuestion"
+            android:text="@string/question1" />
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/heightQuestion">
+
+            <RadioGroup
+                android:id="@+id/radioGroupFirstQestion"
+                style="@style/RadioGroupVertical"
+                android:layout_alignParentLeft="true">
+
+                <RadioButton
+                    android:id="@+id/quiz1Answer1"
+                    style="@style/styleRadioButtonVerticalNormal"
+                    android:text="@string/question1Answer1" />
+
+                <RadioButton
+                    android:id="@+id/quiz1Answer2"
+                    style="@style/styleRadioButtonVerticalSecond"
+                    android:text="@string/question1Answer2" />
+
+                <RadioButton
+                    android:id="@+id/quiz1Answer3"
+                    style="@style/styleRadioButtonVerticalNormal"
+                    android:text="@string/question1Answer3" />
+
+            </RadioGroup>
+
+            <ImageView
+                style="@style/ImageLayout"
+                android:layout_marginRight="@dimen/firstImageMarginRight"
+                android:src="@drawable/mdrtower" />
+        </RelativeLayout>
+
+
+        <View style="@style/separationBar"></View>
+
+        <TextView
+            style="@style/quizQuestion"
+            android:text="@string/question2" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/heightQuestion"
+            android:orientation="horizontal">
+
+            <RadioGroup
+                android:id="@+id/radioGroupSecondQestion"
+                style="@style/RadioGroupVertical"
+                android:layout_alignParentLeft="true">
+
+                <RadioButton
+                    android:id="@+id/quiz2Answer1"
+                    style="@style/styleRadioButtonVerticalNormal"
+                    android:text="@string/question2Answer1" />
+
+                <RadioButton
+                    android:id="@+id/quiz2Answer2"
+                    style="@style/styleRadioButtonVerticalSecond"
+                    android:text="@string/question2Answer2" />
+
+                <RadioButton
+                    android:id="@+id/quiz2Answer3"
+                    style="@style/styleRadioButtonVerticalNormal"
+                    android:text="@string/question2Answer3" />
+
+            </RadioGroup>
+
+            <ImageView
+                style="@style/ImageLayout"
+                android:src="@drawable/voelki" />
+        </RelativeLayout>
+
+        <View style="@style/separationBar"></View>
+
+        <TextView
+            style="@style/quizQuestion"
+            android:text="@string/question3" />
+
+        <EditText
+            android:id="@+id/quiz3Answer1"
+            style="@style/EditTextStyle"
+            android:hint="@string/estimateHint"
+            android:inputType="number" />
+
+        <View style="@style/separationBar"></View>
+
+        <TextView
+            style="@style/quizQuestion"
+            android:text="@string/question4" />
+
+        <RadioButton
+            android:id="@+id/quiz4Answer1"
+            style="@style/styleRadioButtonVerticalNormal"
+            android:drawableRight="@drawable/newtownhall"
+            android:paddingBottom="@dimen/marginRadio"
+            android:paddingRight="30dp"
+            android:paddingTop="@dimen/marginRadio" />
+
+        <RadioButton
+            android:id="@+id/quiz4Answer2"
+            style="@style/styleRadioButtonVerticalNormal"
+            android:drawableRight="@drawable/oldtownhall"
+            android:paddingRight="30dp" />
+
+        <View style="@style/separationBar"></View>
+
+        <TextView
+            style="@style/quizQuestion"
+            android:text="@string/question3" />
+
+
+    </LinearLayout>
+</ScrollView>
+
