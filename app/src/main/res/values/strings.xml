@@ -106,11 +106,21 @@
     <!-- Text for the error that the user did not input a number at question 3 [CHAR LIMIT=25] -->
     <string name="errorEmptyGuests">Please enter a valid number at question 3</string>
 
+
     <!-- First Text for the final result  [CHAR LIMIT=25] -->
-    <string name="final1">Congratulations! \nYou scored\ </string>
+    <string name="final0">Congratulations!\ </string>
 
     <!-- Second Text for the final result  [CHAR LIMIT=25] -->
-    <string name="final2">/7 points in this quiz! \n Feel free to visit Leipzig :)</string>
+    <string name="final1">\nYou scored\ </string>
+
+    <!-- Third Text for the final result  [CHAR LIMIT=40] -->
+    <string name="final2">/7 points in this quiz! \n This is a official invitation to this wonderful city :)</string>
+
+    <!-- Text for the subject of the E-Mail  [CHAR LIMIT=25] -->
+    <string name="emailSubject">Leipzig quiz from\ </string>
+
+    <!-- Text for the reset of the app  [CHAR LIMIT=25] -->
+    <string name="scoreReset">App succesfully resetted. </string>
 
 
 </resources>

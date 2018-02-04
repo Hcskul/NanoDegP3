@@ -1,6 +1,8 @@
 package com.example.android.quizapplk;
 
+import android.content.Intent;
 import android.media.MediaPlayer;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -8,9 +10,12 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
+
+    boolean share = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
     public void onClick(View v) {
         Button one = (Button) findViewById(R.id.playButton);
         final MediaPlayer mp = MediaPlayer.create(this, R.raw.toccata);
-        one.setOnClickListener(new View.OnClickListener(){
+        one.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 mp.start();
             }
@@ -86,8 +91,21 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
-        String finalMessage = getString(R.string.final1) + Integer.toString(finalScore) + getString(R.string.final2);
-        Toast.makeText(this, finalMessage, Toast.LENGTH_SHORT).show();
+        String finalMessage = getString(R.string.final0) + name + getString(R.string.final1) + Integer.toString(finalScore) + getString(R.string.final2);
+
+        if (share) {
+            Intent intent = new Intent(Intent.ACTION_SENDTO);
+            intent.setData(Uri.parse("mailto:"));
+            intent.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.emailSubject) + name);
+            intent.putExtra(Intent.EXTRA_TEXT, finalMessage);
+            if (intent.resolveActivity(getPackageManager()) != null) {
+                startActivity(intent);
+            }
+
+        } else {
+            Toast.makeText(this, finalMessage, Toast.LENGTH_SHORT).show();
+        }
+
 
     }
 
@@ -104,10 +122,34 @@ public class MainActivity extends AppCompatActivity {
         if (shareCheckbox) {
             Button shareAndSee = (Button) findViewById(R.id.checkResults);
             shareAndSee.setText(R.string.ShareResults);
+            share = true;
         } else {
             Button shareAndSee = (Button) findViewById(R.id.checkResults);
             shareAndSee.setText(R.string.ShowResults);
+            share = false;
         }
+    }
+
+    public void resetButtons(View v) {
+        EditText nameInput = (EditText) findViewById(R.id.nameInput);
+        nameInput.setText("");
+        EditText numberGuests = (EditText) findViewById(R.id.guessGuestsChristmasmarket);
+        numberGuests.setText("");
+
+        RadioGroup firstQuestion = (RadioGroup) findViewById(R.id.radioGroupFirstQestion);
+        firstQuestion.clearCheck();
+        RadioGroup secondQuestion = (RadioGroup) findViewById(R.id.radioGroupSecondQestion);
+        secondQuestion.clearCheck();
+        RadioGroup fourthQuestion = (RadioGroup) findViewById(R.id.radioGroupFourthQestion);
+        fourthQuestion.clearCheck();
+        RadioGroup fifthQuestion = (RadioGroup) findViewById(R.id.radioGroupFifthQestion);
+        fifthQuestion.clearCheck();
+        RadioGroup sixthQuestion = (RadioGroup) findViewById(R.id.radioGroupSixthQestion);
+        sixthQuestion.clearCheck();
+        RadioGroup seventhQuestion = (RadioGroup) findViewById(R.id.radioGroupSeventhQestion);
+        seventhQuestion.clearCheck();
+
+        Toast.makeText(this, R.string.scoreReset, Toast.LENGTH_SHORT).show();
     }
 
 }
