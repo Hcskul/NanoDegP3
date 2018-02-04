@@ -125,7 +125,7 @@
             android:text="@string/question3" />
 
         <EditText
-            android:id="@+id/quiz3Answer1"
+            android:id="@+id/guessGuestsChristmasmarket"
             style="@style/EditTextStyle"
             android:hint="@string/estimateHint"
             android:inputType="number" />
@@ -218,8 +218,10 @@
 
         <Button
             android:id="@+id/playButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            style="@style/ButtonStyle"
+            android:layout_marginTop="@dimen/marginPlayButton"
+            android:onClick="onClick"
+            android:text="@string/playButton" />
 
         <RadioGroup
             android:id="@+id/radioGroupSeventhQestion"
@@ -245,6 +247,24 @@
 
         <View style="@style/separationBar"></View>
 
+        <CheckBox
+            android:id="@+id/shareCheckbox"
+            style="@style/CheckBoxStyle"
+            android:onClick="shareResults"
+            android:text="@string/share" />
+
+        <Button
+            android:id="@+id/checkResults"
+            style="@style/ButtonStyle"
+            android:layout_marginBottom="@dimen/marginRadio"
+            android:layout_marginTop="@dimen/marginRadio"
+            android:onClick="checkResults"
+            android:text="@string/ShowResults" />
+
+        <Button
+            style="@style/ButtonStyle"
+            android:layout_marginBottom="@dimen/marginRadio"
+            android:text="@string/reset" />
 
     </LinearLayout>
 </ScrollView>

@@ -125,7 +125,7 @@
             android:text="@string/question3" />
 
         <EditText
-            android:id="@+id/quiz3Answer1"
+            android:id="@+id/guessGuestsChristmasmarket"
             style="@style/EditTextStyle"
             android:hint="@string/estimateHint"
             android:inputType="number" />
@@ -136,26 +136,135 @@
             style="@style/quizQuestion"
             android:text="@string/question4" />
 
-        <RadioButton
-            android:id="@+id/quiz4Answer1"
-            style="@style/styleRadioButtonVerticalNormal"
-            android:drawableRight="@drawable/newtownhall"
-            android:paddingBottom="@dimen/marginRadio"
-            android:paddingRight="30dp"
-            android:paddingTop="@dimen/marginRadio" />
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-        <RadioButton
-            android:id="@+id/quiz4Answer2"
-            style="@style/styleRadioButtonVerticalNormal"
-            android:drawableRight="@drawable/oldtownhall"
-            android:paddingRight="30dp" />
+            <RadioButton
+                android:id="@+id/quiz4Answer1"
+                style="@style/styleRadioButtonVerticalNormal"
+                android:drawableRight="@drawable/newtownhall"
+                android:paddingBottom="@dimen/marginRadio"
+                android:paddingRight="30dp"
+                android:paddingTop="@dimen/marginRadio" />
+
+            <RadioButton
+                android:id="@+id/quiz4Answer2"
+                style="@style/styleRadioButtonVerticalNormal"
+                android:drawableRight="@drawable/oldtownhall"
+                android:paddingRight="30dp" />
+        </RadioGroup>
+
 
         <View style="@style/separationBar"></View>
 
         <TextView
             style="@style/quizQuestion"
-            android:text="@string/question3" />
+            android:text="@string/question5" />
 
+        <RadioGroup
+            android:id="@+id/radioGroupFifthQestion"
+            style="@style/RadioGroupVertical"
+            android:layout_alignParentLeft="true">
+
+            <RadioButton
+                android:id="@+id/quiz5Answer1"
+                style="@style/styleRadioButtonVerticalNormal"
+                android:text="@string/question5Answer1" />
+
+            <RadioButton
+                android:id="@+id/quiz5Answer2"
+                style="@style/styleRadioButtonVerticalSecond"
+                android:text="@string/question5Answer2" />
+
+            <RadioButton
+                android:id="@+id/quiz5Answer3"
+                style="@style/styleRadioButtonVerticalNormal"
+                android:text="@string/question5Answer3" />
+        </RadioGroup>
+
+        <View style="@style/separationBar"></View>
+
+        <TextView
+            style="@style/quizQuestion"
+            android:text="@string/question6" />
+
+        <RadioGroup
+            android:id="@+id/radioGroupSixthQestion"
+            style="@style/RadioGroupVertical"
+            android:layout_alignParentLeft="true">
+
+            <RadioButton
+                android:id="@+id/quiz6Answer1"
+                style="@style/styleRadioButtonVerticalNormal"
+                android:text="@string/question6Answer1" />
+
+            <RadioButton
+                android:id="@+id/quiz6Answer2"
+                style="@style/styleRadioButtonVerticalSecond"
+                android:text="@string/question6Answer2" />
+
+            <RadioButton
+                android:id="@+id/quiz6Answer3"
+                style="@style/styleRadioButtonVerticalNormal"
+                android:text="@string/question6Answer3" />
+        </RadioGroup>
+
+        <View style="@style/separationBar"></View>
+
+        <TextView
+            style="@style/quizQuestion"
+            android:text="@string/question7" />
+
+        <Button
+            android:id="@+id/playButton"
+            style="@style/ButtonStyle"
+            android:layout_marginTop="@dimen/marginPlayButton"
+            android:onClick="onClick"
+            android:text="@string/playButton" />
+
+        <RadioGroup
+            android:id="@+id/radioGroupSeventhQestion"
+            style="@style/RadioGroupVertical"
+            android:layout_alignParentLeft="true">
+
+            <RadioButton
+                android:id="@+id/quiz7Answer1"
+                style="@style/styleRadioButtonVerticalNormal"
+                android:text="@string/question7Answer1" />
+
+            <RadioButton
+                android:id="@+id/quiz7Answer2"
+                style="@style/styleRadioButtonVerticalSecond"
+                android:text="@string/question7Answer2" />
+
+            <RadioButton
+                android:id="@+id/quiz7Answer3"
+                style="@style/styleRadioButtonVerticalNormal"
+                android:text="@string/question7Answer3" />
+
+        </RadioGroup>
+
+        <View style="@style/separationBar"></View>
+
+        <CheckBox
+            android:id="@+id/shareCheckbox"
+            style="@style/CheckBoxStyle"
+            android:onClick="shareResults"
+            android:text="@string/share" />
+
+        <Button
+            android:id="@+id/checkResults"
+            style="@style/ButtonStyle"
+            android:layout_marginBottom="@dimen/marginRadio"
+            android:layout_marginTop="@dimen/marginRadio"
+            android:onClick="checkResults"
+            android:text="@string/ShowResults" />
+
+        <Button
+            style="@style/ButtonStyle"
+            android:layout_marginBottom="@dimen/marginRadio"
+            android:text="@string/reset" />
 
     </LinearLayout>
 </ScrollView>

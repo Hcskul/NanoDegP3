@@ -85,5 +85,32 @@
     <string name="question7Answer3">Georg Friedrich Händel</string>
 
 
+    <!-- play Text for the toccata music button [CHAR LIMIT=15] -->
+    <string name="playButton">Tap to play</string>
+
+    <!-- Text for the result button if the user don't want to share it [CHAR LIMIT=15] -->
+    <string name="ShowResults">Check your results</string>
+
+    <!-- Text for the result button if the user want to share it [CHAR LIMIT=15] -->
+    <string name="ShareResults">Share your results</string>
+
+    <!-- Text for the reset button [CHAR LIMIT=15] -->
+    <string name="share">Share your score</string>
+
+    <!-- Text for the reset button [CHAR LIMIT=15] -->
+    <string name="reset">Reset your score</string>
+
+    <!-- Text for the error that the user did not input a name [CHAR LIMIT=25] -->
+    <string name="errorEmptyName">Please enter a name</string>
+
+    <!-- Text for the error that the user did not input a number at question 3 [CHAR LIMIT=25] -->
+    <string name="errorEmptyGuests">Please enter a valid number at question 3</string>
+
+    <!-- First Text for the final result  [CHAR LIMIT=25] -->
+    <string name="final1">Congratulations! \nYou scored\ </string>
+
+    <!-- Second Text for the final result  [CHAR LIMIT=25] -->
+    <string name="final2">/7 points in this quiz! \n Feel free to visit Leipzig :)</string>
+
 
 </resources>
