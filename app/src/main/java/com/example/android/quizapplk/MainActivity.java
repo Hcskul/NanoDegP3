@@ -1,7 +1,6 @@
 package com.example.android.quizapplk;
 
 import android.content.Intent;
-import android.content.res.Resources;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
@@ -92,9 +91,8 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         }
-
-        Resources res = getResources();
-        String finalMessage = res.getString(R.string.finalString, name, finalScore);
+        
+        String finalMessage = getResources().getString(R.string.finalString, name, finalScore);
 
         if (share) {
             Intent intent = new Intent(Intent.ACTION_SENDTO);
