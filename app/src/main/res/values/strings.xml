@@ -1,6 +1,6 @@
 <resources>
     <!-- Title for the application. [CHAR LIMIT=12] -->
-    <string name="app_name">Quiz App LK</string>
+    <string name="app_name" translatable="false">Quiz App LK</string>
 
     <!-- Hint for the name input [CHAR LIMIT=25] -->
     <string name="inputName">Please enter your name</string>
@@ -13,26 +13,26 @@
     <string name="question1">1. How high is the tallest building in Leipzig? </string>
 
     <!-- First answer of the first question [CHAR LIMIT=12] -->
-    <string name="question1Answer1">123m</string>
+    <string name="question1Answer1" translatable="false">123m</string>
 
     <!-- Second answer of the first question [CHAR LIMIT=12] -->
-    <string name="question1Answer2">142m</string>
+    <string name="question1Answer2" translatable="false">142m</string>
 
     <!-- Third answer of the first question [CHAR LIMIT=12] -->
-    <string name="question1Answer3">151m</string>
+    <string name="question1Answer3" translatable="false">151m</string>
 
 
     <!-- Second question [CHAR LIMIT=40] -->
     <string name="question2">2. When did Napoleon lose the battle of the nations near Leipzig? </string>
 
     <!-- First answer of the second question [CHAR LIMIT=12] -->
-    <string name="question2Answer1">1811</string>
+    <string name="question2Answer1" translatable="false">1811</string>
 
     <!-- Second answer of the second question [CHAR LIMIT=12] -->
-    <string name="question2Answer2">1813</string>
+    <string name="question2Answer2" translatable="false">1813</string>
 
     <!-- Third answer of the second question [CHAR LIMIT=12] -->
-    <string name="question2Answer3">1815</string>
+    <string name="question2Answer3" translatable="false">1815</string>
 
 
     <!-- Third question [CHAR LIMIT=30] -->
@@ -76,13 +76,13 @@
     <string name="question7">7. Which famous componist created this piece: </string>
 
     <!-- First answer of the seventh question [CHAR LIMIT=20] -->
-    <string name="question7Answer1">Johann Sebastian Bach</string>
+    <string name="question7Answer1" translatable="false">Johann Sebastian Bach</string>
 
     <!-- Second answer of the seventh question [CHAR LIMIT=20] -->
-    <string name="question7Answer2">Felix Mendelssohn Bartholdy</string>
+    <string name="question7Answer2" translatable="false">Felix Mendelssohn Bartholdy</string>
 
     <!-- Third answer of the seventh question [CHAR LIMIT=20] -->
-    <string name="question7Answer3">Georg Friedrich Händel</string>
+    <string name="question7Answer3" translatable="false">Georg Friedrich Händel</string>
 
 
     <!-- play Text for the toccata music button [CHAR LIMIT=15] -->
@@ -111,10 +111,10 @@
     <string name="final0">Congratulations!\ </string>
 
     <!-- Second Text for the final result  [CHAR LIMIT=25] -->
-    <string name="final1">\nYou scored\ </string>
+    <string name="final1">" You scored "</string>
 
     <!-- Third Text for the final result  [CHAR LIMIT=40] -->
-    <string name="final2">/7 points in this quiz! \n This is an official invitation to this wonderful city :)</string>
+    <string name="final2">/7 points in this quiz!   This is an official invitation to this wonderful city :)</string>
 
     <!-- Text for the subject of the E-Mail  [CHAR LIMIT=25] -->
     <string name="emailSubject">Leipzig quiz from\ </string>

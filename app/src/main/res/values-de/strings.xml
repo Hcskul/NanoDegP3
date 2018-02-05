@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Quiz App LK</string>
+    <string name="inputName">Bitte geben Sie Ihren Namen ein!</string>
+    <string name="welcomeText">Willkommen zur Leipzig Quiz App. Besuchen Sie diese wunderschöne Stadt einmal :)</string>
+    <string name="question1">1. Wie hoch ist das größte Gebäude Leipzigs?</string>
+    <string name="question2">2. Wann hat Napoleon die Völkerschlacht zu Leipzig verloren?</string>
+    <string name="question3">3. Schätzen Sie bitte, wie viele Menschen den Leipziger Weihnachtsmarkt 2017 besucht haben!</string>
+    <string name="estimateHint">Geben Sie Ihren Tipp bitte hier ein!</string>
+    <string name="question6Answer1">~ 11000 Studenten</string>
+    <string name="question6Answer2">~ 54000 Studenten</string>
+    <string name="question6Answer3">~ 38000 Studenten</string>
+    <string name="question4">4. Welches der beiden Rathäuser ist das \"Alte Rathaus zu Leipzig\"?</string>
+    <string name="question5">5. Was ist Leipziger Allerlei?</string>
+    <string name="question5Answer1">Ein Gericht mit Gemüse</string>
+    <string name="question5Answer2">Eine Musikgruppe aus Leipzig</string>
+    <string name="question5Answer3">Eine sehr berühmte Statue</string>
+    <string name="question6">6. Schätzen Sie bitte, wie viele Studenten aktuell in Leipzig immatrikuliert sind?</string>
+    <string name="question7">7. Welcher berühmte Komponist erschuf dieses Werk?</string>
+    <string name="playButton">Drücken um Audio wiederzugeben</string>
+    <string name="share">Teilen Sie Ihr Ergebnis</string>
+    <string name="reset">Löschen Sie ihr Ergebnis</string>
+    <string name="ShowResults">Ergebnis ansehen</string>
+    <string name="ShareResults">Ergebnis teilen</string>
+    <string name="scoreReset">App erfolgreich zurückgesetzt</string>
+    <string name="emailSubject">Leipzig Quiz von</string>
+    <string name="final0">Herzlichen Glückwunsch!</string>
+    <string name="errorEmptyName">Bitte geben Sie Ihren Namen ein!</string>
+    <string name="errorEmptyGuests">Bitte geben Sie eine Antwort bei Frage 3 ein!</string>
+    <string name="final1">" Sie haben "</string>
+    <string name="final2">/7 Punkten erreicht!  Sehen Sie das als offizielle Einladung Leipzig zu besichtigen :)</string>
+</resources>
