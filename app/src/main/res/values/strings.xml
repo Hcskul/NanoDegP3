@@ -106,15 +106,8 @@
     <!-- Text for the error that the user did not input a number at question 3 [CHAR LIMIT=25] -->
     <string name="errorEmptyGuests">Please enter a valid number at question 3</string>
 
-
-    <!-- First Text for the final result  [CHAR LIMIT=25] -->
-    <string name="final0">Congratulations!\ </string>
-
     <!-- Second Text for the final result  [CHAR LIMIT=25] -->
-    <string name="final1">" You scored "</string>
-
-    <!-- Third Text for the final result  [CHAR LIMIT=40] -->
-    <string name="final2">/7 points in this quiz!   This is an official invitation to this wonderful city :)</string>
+    <string name="finalString">Congratulations %1$s!\nYou scored %2$d/7 points in this quiz!\nThis is an official invitation to this wonderful city :)</string>
 
     <!-- Text for the subject of the E-Mail  [CHAR LIMIT=25] -->
     <string name="emailSubject">Leipzig quiz from\ </string>

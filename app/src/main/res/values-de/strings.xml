@@ -24,9 +24,7 @@
     <string name="ShareResults">Ergebnis teilen</string>
     <string name="scoreReset">App erfolgreich zurückgesetzt</string>
     <string name="emailSubject">Leipzig Quiz von</string>
-    <string name="final0">Herzlichen Glückwunsch!</string>
     <string name="errorEmptyName">Bitte geben Sie Ihren Namen ein!</string>
     <string name="errorEmptyGuests">Bitte geben Sie eine Antwort bei Frage 3 ein!</string>
-    <string name="final1">" Sie haben "</string>
-    <string name="final2">/7 Punkten erreicht!  Sehen Sie das als offizielle Einladung Leipzig zu besichtigen :)</string>
+    <string name="finalString">Herzlichen Glückwunsch %1$s\n Sie haben %2$d/7 Punkten erreicht!\n Verstehen Sie dieses Quiz als Einladung diese schöne Stadt zu besuchen :)</string>
 </resources>
