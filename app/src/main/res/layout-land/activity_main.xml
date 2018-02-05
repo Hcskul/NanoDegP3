@@ -139,21 +139,22 @@
         <RadioGroup
             android:id="@+id/radioGroupFourthQestion"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/marginHorizontalQuestion4">
 
             <RadioButton
                 android:id="@+id/quiz4Answer1"
                 style="@style/styleRadioButtonVerticalNormal"
                 android:drawableRight="@drawable/newtownhall"
                 android:paddingBottom="@dimen/marginRadio"
-                android:paddingRight="30dp"
+                android:paddingRight="@dimen/paddingRightQuestion4"
                 android:paddingTop="@dimen/marginRadio" />
 
             <RadioButton
                 android:id="@+id/quiz4Answer2"
                 style="@style/styleRadioButtonVerticalNormal"
                 android:drawableRight="@drawable/oldtownhall"
-                android:paddingRight="30dp" />
+                android:paddingRight="@dimen/paddingRightQuestion4" />
         </RadioGroup>
 
 

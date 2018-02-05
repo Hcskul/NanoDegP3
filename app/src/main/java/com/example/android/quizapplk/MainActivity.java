@@ -24,7 +24,6 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-
     /*
     Methode to hear the toccata.mp3
      */
@@ -38,7 +37,9 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-
+    /*
+    method to check the results
+    */
     public void checkResults(View v) {
         int finalScore = 0;
         RadioButton right1 = (RadioButton) findViewById(R.id.quiz1Answer2);
@@ -129,6 +130,10 @@ public class MainActivity extends AppCompatActivity {
             share = false;
         }
     }
+
+    /*
+    method to reset everything in the app
+     */
 
     public void resetButtons(View v) {
         EditText nameInput = (EditText) findViewById(R.id.nameInput);

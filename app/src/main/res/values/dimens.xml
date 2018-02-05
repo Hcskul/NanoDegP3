@@ -7,4 +7,7 @@
     <dimen name="heightQuestion">140dp</dimen>
     <dimen name="firstImageMarginRight">30dp</dimen>
     <dimen name="marginPlayButton">4dp</dimen>
+    <dimen name="marginVerticalQuestion4">15dp</dimen>
+    <dimen name="marginHorizontalQuestion4">50dp</dimen>
+    <dimen name="paddingRightQuestion4">30dp</dimen>
 </resources>

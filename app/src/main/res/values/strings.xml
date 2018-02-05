@@ -22,7 +22,7 @@
     <string name="question1Answer3">151m</string>
 
 
-    <!-- Second question [CHAR LIMIT=30] -->
+    <!-- Second question [CHAR LIMIT=40] -->
     <string name="question2">2. When did Napoleon lose the battle of the nations near Leipzig? </string>
 
     <!-- First answer of the second question [CHAR LIMIT=12] -->
@@ -47,7 +47,7 @@
 
 
     <!-- Fifth question [CHAR LIMIT=30] -->
-    <string name="question5">5. Guess what "Leipziger Allerlei" (Leipzig's everything) is! </string>
+    <string name="question5">5. Guess what "Leipziger Allerlei" (Leipzig\'s everything) is! </string>
 
     <!-- First answer of the fifth question [CHAR LIMIT=20] -->
     <string name="question5Answer1">A meal with vegetables </string>
@@ -59,7 +59,7 @@
     <string name="question5Answer3">A very precious sculpture</string>
 
 
-    <!-- Sixth question [CHAR LIMIT=30] -->
+    <!-- Sixth question [CHAR LIMIT=40] -->
     <string name="question6">6. Guess how many undergraduates are currently in Leipzig! </string>
 
     <!-- First answer of the sixth question [CHAR LIMIT=20] -->
@@ -94,7 +94,7 @@
     <!-- Text for the result button if the user want to share it [CHAR LIMIT=15] -->
     <string name="ShareResults">Share your results</string>
 
-    <!-- Text for the reset button [CHAR LIMIT=15] -->
+    <!-- Text for the share CheckBox [CHAR LIMIT=15] -->
     <string name="share">Share your score</string>
 
     <!-- Text for the reset button [CHAR LIMIT=15] -->
@@ -114,13 +114,12 @@
     <string name="final1">\nYou scored\ </string>
 
     <!-- Third Text for the final result  [CHAR LIMIT=40] -->
-    <string name="final2">/7 points in this quiz! \n This is a official invitation to this wonderful city :)</string>
+    <string name="final2">/7 points in this quiz! \n This is an official invitation to this wonderful city :)</string>
 
     <!-- Text for the subject of the E-Mail  [CHAR LIMIT=25] -->
     <string name="emailSubject">Leipzig quiz from\ </string>
 
     <!-- Text for the reset of the app  [CHAR LIMIT=25] -->
     <string name="scoreReset">App succesfully resetted. </string>
-
 
 </resources>
