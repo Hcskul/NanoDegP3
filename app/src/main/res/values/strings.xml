@@ -73,7 +73,7 @@
 
 
     <!-- Seventh question [CHAR LIMIT=30] -->
-    <string name="question7">7. Whih famous componist created this piece: </string>
+    <string name="question7">7. Which famous componist created this piece: </string>
 
     <!-- First answer of the seventh question [CHAR LIMIT=20] -->
     <string name="question7Answer1" translatable="false">Johann Sebastian Bach</string>
