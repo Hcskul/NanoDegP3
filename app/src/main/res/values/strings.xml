@@ -85,6 +85,19 @@
     <string name="question7Answer3" translatable="false">Georg Friedrich Händel</string>
 
 
+    <!-- Eighth question [CHAR LIMIT=30] -->
+    <string name="question8">"8. Which rivers flows through Leipzig? "</string>
+
+    <!-- First answer of the seventh question [CHAR LIMIT=20] -->
+    <string name="question8Answer1" translatable="false">Weiße Elster</string>
+
+    <!-- Second answer of the seventh question [CHAR LIMIT=20] -->
+    <string name="question8Answer2" translatable="false">Elbe</string>
+
+    <!-- Third answer of the seventh question [CHAR LIMIT=20] -->
+    <string name="question8Answer3" translatable="false">Parthe</string>
+
+
     <!-- play Text for the toccata music button [CHAR LIMIT=15] -->
     <string name="playButton">Tap to play</string>
 
@@ -107,7 +120,7 @@
     <string name="errorEmptyGuests">Please enter a valid number at question 3</string>
 
     <!-- Second Text for the final result  [CHAR LIMIT=25] -->
-    <string name="finalString">Congratulations %1$s!\nYou scored %2$d/7 points in this quiz!\nThis is an official invitation to this wonderful city :)</string>
+    <string name="finalString">Congratulations %1$s!\nYou scored %2$d/8 points in this quiz!\nThis is an official invitation to this wonderful city :)</string>
 
     <!-- Text for the subject of the E-Mail  [CHAR LIMIT=25] -->
     <string name="emailSubject">Leipzig quiz from\ </string>

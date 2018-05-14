@@ -249,6 +249,27 @@
 
         <View style="@style/separationBar"></View>
 
+        <TextView
+            style="@style/quizQuestion"
+            android:text="@string/question8" />
+
+        <CheckBox
+            android:id="@+id/quiz8Answer1"
+            style="@style/CheckBoxStyle"
+            android:text="@string/question8Answer1" />
+
+        <CheckBox
+            android:id="@+id/quiz8Answer2"
+            style="@style/CheckBoxStyle"
+            android:text="@string/question8Answer2" />
+
+        <CheckBox
+            android:id="@+id/quiz8Answer3"
+            style="@style/CheckBoxStyle"
+            android:text="@string/question8Answer3" />
+
+        <View style="@style/separationBar"></View>
+
         <CheckBox
             android:id="@+id/shareCheckbox"
             style="@style/CheckBoxStyle"

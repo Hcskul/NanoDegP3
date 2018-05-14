@@ -15,7 +15,7 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
-    boolean share = false;
+    private boolean share = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,28 +50,28 @@ public class MainActivity extends AppCompatActivity {
         RadioButton right6 = (RadioButton) findViewById(R.id.quiz7Answer1);
 
         if (right1.isChecked()) {
-            finalScore += 1;
+            finalScore++;
         }
         if (right2.isChecked()) {
-            finalScore += 1;
+            finalScore++;
         }
         if (right3.isChecked()) {
-            finalScore += 1;
+            finalScore++;
         }
         if (right4.isChecked()) {
-            finalScore += 1;
+            finalScore++;
         }
         if (right5.isChecked()) {
-            finalScore += 1;
+            finalScore++;
         }
         if (right6.isChecked()) {
-            finalScore += 1;
+            finalScore++;
         }
 
         // Checks if the name input is empty
         EditText nameInput = (EditText) findViewById(R.id.nameInput);
         String name = nameInput.getText().toString();
-        if (name.matches("")) {
+        if (name.isEmpty()) {
             Toast.makeText(this, R.string.errorEmptyName, Toast.LENGTH_SHORT).show();
             return;
         }
@@ -80,18 +80,28 @@ public class MainActivity extends AppCompatActivity {
         EditText numberGuests = (EditText) findViewById(R.id.guessGuestsChristmasmarket);
         String guestsString = numberGuests.getText().toString();
 
-        if (guestsString.matches("")) {
+        if (guestsString.isEmpty()) {
             Toast.makeText(this, R.string.errorEmptyGuests, Toast.LENGTH_SHORT).show();
             return;
         } else {
-            int GuestsInt = Integer.parseInt(numberGuests.getText().toString());
-            if (GuestsInt > 1900000) {
-                if (GuestsInt < 2200000) {
-                    finalScore += 1;
-                }
+            int guestsInt = Integer.parseInt(numberGuests.getText().toString());
+            if (guestsInt > 1900000 && guestsInt < 2200000) {
+                finalScore++;
             }
         }
-        
+
+        // Checks if the answers at question 8 are right
+        CheckBox quiz8Answer1 = (CheckBox) findViewById(R.id.quiz8Answer1);
+        boolean isRight1 = quiz8Answer1.isChecked();
+        CheckBox quiz8Answer2 = (CheckBox) findViewById(R.id.quiz8Answer2);
+        boolean isWrong = quiz8Answer2.isChecked();
+        CheckBox quiz8Answer3 = (CheckBox) findViewById(R.id.quiz8Answer3);
+        boolean isRight2 = quiz8Answer3.isChecked();
+        if (isRight1 && !isWrong && isRight2) {
+            finalScore++;
+        }
+
+        // Checks if the player wants to share his or her results
         String finalMessage = getResources().getString(R.string.finalString, name, finalScore);
 
         if (share) {
@@ -109,8 +119,6 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
-
-
 
     /*
     methode to change the behavior to check/share the results
@@ -153,6 +161,15 @@ public class MainActivity extends AppCompatActivity {
         sixthQuestion.clearCheck();
         RadioGroup seventhQuestion = (RadioGroup) findViewById(R.id.radioGroupSeventhQestion);
         seventhQuestion.clearCheck();
+        CheckBox eighthQestionAnswerOne = (CheckBox) findViewById(R.id.quiz8Answer1);
+        eighthQestionAnswerOne.setChecked(false);
+        CheckBox eighthQestionAnswerTwo = (CheckBox) findViewById(R.id.quiz8Answer1);
+        eighthQestionAnswerTwo.setChecked(false);
+        CheckBox eighthQestionAnswerThree = (CheckBox) findViewById(R.id.quiz8Answer1);
+        eighthQestionAnswerThree.setChecked(false);
+
+        CheckBox shareCheckbox = (CheckBox) findViewById(R.id.quiz8Answer1);
+        shareCheckbox.setChecked(false);
 
         Toast.makeText(this, R.string.scoreReset, Toast.LENGTH_SHORT).show();
     }

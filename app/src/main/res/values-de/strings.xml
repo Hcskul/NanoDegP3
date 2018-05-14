@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Quiz App LK</string>
     <string name="inputName">Bitte geben Sie Ihren Namen ein!</string>
     <string name="welcomeText">Willkommen zur Leipzig Quiz App. Besuchen Sie diese wunderschöne Stadt einmal :)</string>
     <string name="question1">1. Wie hoch ist das größte Gebäude Leipzigs?</string>
@@ -26,5 +25,6 @@
     <string name="emailSubject">Leipzig Quiz von</string>
     <string name="errorEmptyName">Bitte geben Sie Ihren Namen ein!</string>
     <string name="errorEmptyGuests">Bitte geben Sie eine Antwort bei Frage 3 ein!</string>
-    <string name="finalString">Herzlichen Glückwunsch %1$s\n Sie haben %2$d/7 Punkten erreicht!\n Verstehen Sie dieses Quiz als Einladung diese schöne Stadt zu besuchen :)</string>
+    <string name="finalString">Herzlichen Glückwunsch %1$s\n Sie haben %2$d/8 Punkten erreicht!\n Verstehen Sie dieses Quiz als Einladung diese schöne Stadt zu besuchen :)</string>
+    <string name="question8">8. Welche Flüsse fließen durch Leipzig?</string>
 </resources>
