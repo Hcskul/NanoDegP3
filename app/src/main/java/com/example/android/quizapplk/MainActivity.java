@@ -163,12 +163,12 @@ public class MainActivity extends AppCompatActivity {
         seventhQuestion.clearCheck();
         CheckBox eighthQestionAnswerOne = (CheckBox) findViewById(R.id.quiz8Answer1);
         eighthQestionAnswerOne.setChecked(false);
-        CheckBox eighthQestionAnswerTwo = (CheckBox) findViewById(R.id.quiz8Answer1);
+        CheckBox eighthQestionAnswerTwo = (CheckBox) findViewById(R.id.quiz8Answer2);
         eighthQestionAnswerTwo.setChecked(false);
-        CheckBox eighthQestionAnswerThree = (CheckBox) findViewById(R.id.quiz8Answer1);
+        CheckBox eighthQestionAnswerThree = (CheckBox) findViewById(R.id.quiz8Answer3);
         eighthQestionAnswerThree.setChecked(false);
 
-        CheckBox shareCheckbox = (CheckBox) findViewById(R.id.quiz8Answer1);
+        CheckBox shareCheckbox = (CheckBox) findViewById(R.id.shareCheckbox);
         shareCheckbox.setChecked(false);
 
         Toast.makeText(this, R.string.scoreReset, Toast.LENGTH_SHORT).show();
