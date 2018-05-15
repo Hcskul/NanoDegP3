@@ -28,13 +28,8 @@ public class MainActivity extends AppCompatActivity {
     Methode to hear the toccata.mp3
      */
     public void onClick(View v) {
-        Button one = (Button) findViewById(R.id.playButton);
         final MediaPlayer mp = MediaPlayer.create(this, R.raw.toccata);
-        one.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                mp.start();
-            }
-        });
+        mp.start();
     }
 
     /*
