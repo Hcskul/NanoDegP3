@@ -1,9 +1,21 @@
 <resources>
     <!-- Title for the application. [CHAR LIMIT=12] -->
-    <string name="app_name" translatable="false">Quiz App LK</string>
+    <string name="app_name" translatable="false">Leipzig Quiz</string>
+
+    <!-- Text for the welcome screen [CHAR LIMIT=25] -->
+    <string name="inputName">Please enter your name:</string>
 
     <!-- Hint for the name input [CHAR LIMIT=25] -->
-    <string name="inputName">Please enter your name</string>
+    <string name="inputNameEdit">Name</string>
+
+    <!-- Text for the welcome screen [CHAR LIMIT=25] -->
+    <string name="inputAge">Please enter your age:</string>
+
+    <!-- Hint for the name input [CHAR LIMIT=25] -->
+    <string name="inputAgeEdit">Age</string>
+
+    <!-- Text for the proceed button [CHAR LIMIT=25] -->
+    <string name="proceedingButton">Start the quiz!</string>
 
     <!-- Welcome text of the app [CHAR LIMIT=30] -->
     <string name="welcomeText">Welcome to this quiz app about Leipzig. Feel free to visit this awesome city :)</string>
