@@ -27,6 +27,7 @@ public class MovieListingActivity extends AppCompatActivity {
     private static final String KEY_DATA = "data";
     private static final String KEY_MOVIE_ID = "movie_id";
     private static final String KEY_MOVIE_NAME = "movie_name";
+    private static final String KEY_MOVIE_GENRE = "movie_genre";
     private static final String BASE_URL = "http://192.168.0.169/movies/";
     private ArrayList<HashMap<String, String>> movieList;
     private ListView movieListView;
@@ -47,8 +48,7 @@ public class MovieListingActivity extends AppCompatActivity {
     private void populateMovieList() {
         ListAdapter adapter = new SimpleAdapter(
                 MovieListingActivity.this, movieList,
-                R.layout.list_item, new String[]{KEY_MOVIE_ID,
-                KEY_MOVIE_NAME},
+                R.layout.list_item, new String[]{KEY_MOVIE_ID, KEY_MOVIE_NAME},
                 new int[]{R.id.movieId, R.id.movieName});
         // updating listview
         movieListView.setAdapter(adapter);
