@@ -25,9 +25,9 @@ import java.util.HashMap;
 public class MovieListingActivity extends AppCompatActivity {
     private static final String KEY_SUCCESS = "success";
     private static final String KEY_DATA = "data";
-    private static final String KEY_MOVIE_ID = "player_id";
-    private static final String KEY_MOVIE_NAME = "name";
-    private static final String KEY_MOVIE_GENRE = "age";
+    private static final String KEY_PLAYER_ID = "name";
+    private static final String KEY_NAME = "age";
+    private static final String KEY_MOVIE_GENRE = "points";
     private static final String BASE_URL = "http://192.168.0.169/quizapp/";
     private ArrayList<HashMap<String, String>> movieList;
     private ListView movieListView;
@@ -48,7 +48,7 @@ public class MovieListingActivity extends AppCompatActivity {
     private void populateMovieList() {
         ListAdapter adapter = new SimpleAdapter(
                 MovieListingActivity.this, movieList,
-                R.layout.list_item, new String[]{KEY_MOVIE_ID, KEY_MOVIE_NAME, KEY_MOVIE_GENRE},
+                R.layout.list_item, new String[]{KEY_PLAYER_ID, KEY_NAME, KEY_MOVIE_GENRE},
                 new int[]{R.id.movieId, R.id.movieName, R.id.movieGenre});
         // updating listview
         movieListView.setAdapter(adapter);
@@ -86,7 +86,7 @@ public class MovieListingActivity extends AppCompatActivity {
         protected String doInBackground(String... params) {
             HttpJsonParser httpJsonParser = new HttpJsonParser();
             JSONObject jsonObject = httpJsonParser.makeHttpRequest(
-                    BASE_URL + "display_players2.php", "GET", null);
+                    BASE_URL + "display_players.php", "GET", null);
             try {
                 int success = jsonObject.getInt(KEY_SUCCESS);
                 JSONArray movies;
@@ -96,13 +96,13 @@ public class MovieListingActivity extends AppCompatActivity {
                     //Iterate through the response and populate movies list
                     for (int i = 0; i < movies.length(); i++) {
                         JSONObject movie = movies.getJSONObject(i);
-                        Integer movieId = movie.getInt(KEY_MOVIE_ID);
-                        String movieName = movie.getString(KEY_MOVIE_NAME);
-                        String movieGenre = movie.getString(KEY_MOVIE_GENRE);
+                        String movieId = movie.getString(KEY_PLAYER_ID);
+                        Integer movieName = movie.getInt(KEY_NAME);
+                        Integer movieGenre = movie.getInt(KEY_MOVIE_GENRE);
                         HashMap<String, String> map = new HashMap<String, String>();
-                        map.put(KEY_MOVIE_ID, movieId.toString());
-                        map.put(KEY_MOVIE_NAME, movieName);
-                        map.put(KEY_MOVIE_GENRE, movieGenre);
+                        map.put(KEY_PLAYER_ID, movieId);
+                        map.put(KEY_NAME, movieName.toString());
+                        map.put(KEY_MOVIE_GENRE, movieGenre.toString());
                         movieList.add(map);
                     }
                 }
