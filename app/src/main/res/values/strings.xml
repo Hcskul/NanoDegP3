@@ -131,6 +131,9 @@
     <!-- Text for the error that the user did not input a number at question 3 [CHAR LIMIT=25] -->
     <string name="errorEmptyGuests">Please enter a valid number at question 3</string>
 
+    <!-- Text for the error that the user did not input a number for his age [CHAR LIMIT=25] -->
+    <string name="errorEmptyAge">Please enter your age</string>
+
     <!-- Second Text for the final result  [CHAR LIMIT=25] -->
     <string name="finalString">Congratulations %1$s!\nYou scored %2$d/8 points in this quiz!\nThis is an official invitation to this wonderful city :)</string>
 

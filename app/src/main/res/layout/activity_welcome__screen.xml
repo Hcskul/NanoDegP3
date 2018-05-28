@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:focusable="true"
+    android:focusableInTouchMode="true">
 
     <LinearLayout
         android:layout_width="fill_parent"
@@ -19,7 +21,10 @@
             style="@style/welcomeText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:gravity="center"
             android:text="@string/welcomeText" />
+
+        <View style="@style/separationBar" />
 
 
         <TextView
@@ -48,7 +53,7 @@
             style="@style/EditTextStyle"
             android:gravity="center"
             android:hint="@string/inputAgeEdit"
-            android:inputType="textCapWords" />
+            android:inputType="number" />
 
         <Button
             android:id="@+id/proceedingButton"

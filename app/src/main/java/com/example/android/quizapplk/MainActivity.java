@@ -66,18 +66,11 @@ public class MainActivity extends AppCompatActivity {
             finalScore++;
         }
 
-        // Checks if the name input is empty
-        EditText nameInput = (EditText) findViewById(R.id.nameInput);
-        String name = nameInput.getText().toString();
-        if (name.isEmpty()) {
-            Toast.makeText(this, R.string.errorEmptyName, Toast.LENGTH_SHORT).show();
-            return;
-        }
+
 
         // Checks if the number of guests input is empty
         EditText numberGuests = (EditText) findViewById(R.id.guessGuestsChristmasmarket);
         String guestsString = numberGuests.getText().toString();
-
         if (guestsString.isEmpty()) {
             Toast.makeText(this, R.string.errorEmptyGuests, Toast.LENGTH_SHORT).show();
             return;
@@ -100,12 +93,12 @@ public class MainActivity extends AppCompatActivity {
         }
 
         // Checks if the player wants to share his or her results
-        String finalMessage = getResources().getString(R.string.finalString, name, finalScore);
+        String finalMessage = getResources().getString(R.string.finalString, Welcome_Screen.name, finalScore);
 
         if (share) {
             Intent intent = new Intent(Intent.ACTION_SENDTO);
             intent.setData(Uri.parse("mailto:"));
-            intent.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.emailSubject) + name);
+            intent.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.emailSubject) + Welcome_Screen.name);
             intent.putExtra(Intent.EXTRA_TEXT, finalMessage);
             if (intent.resolveActivity(getPackageManager()) != null) {
                 startActivity(intent);
@@ -114,8 +107,6 @@ public class MainActivity extends AppCompatActivity {
         } else {
             Toast.makeText(this, finalMessage, Toast.LENGTH_SHORT).show();
         }
-
-
     }
 
     /*
