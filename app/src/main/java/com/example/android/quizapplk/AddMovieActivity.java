@@ -54,12 +54,8 @@ public class AddMovieActivity extends AppCompatActivity {
                 if (CheckNetworkStatus.isNetworkAvailable(getApplicationContext())) {
                     addMovie();
                 } else {
-                    Toast.makeText(AddMovieActivity.this,
-                            "Unable to connect to internet",
-                            Toast.LENGTH_LONG).show();
-
+                    Toast.makeText(AddMovieActivity.this, "Unable to connect to internet", Toast.LENGTH_LONG).show();
                 }
-
             }
         });
 

@@ -27,7 +27,7 @@ public class MovieListingActivity extends AppCompatActivity {
     private static final String KEY_DATA = "data";
     private static final String KEY_MOVIE_ID = "movie_id";
     private static final String KEY_MOVIE_NAME = "movie_name";
-    private static final String KEY_MOVIE_GENRE = "movie_genre";
+    private static final String KEY_MOVIE_GENRE = "genre";
     private static final String BASE_URL = "http://192.168.0.169/movies/";
     private ArrayList<HashMap<String, String>> movieList;
     private ListView movieListView;
@@ -48,8 +48,8 @@ public class MovieListingActivity extends AppCompatActivity {
     private void populateMovieList() {
         ListAdapter adapter = new SimpleAdapter(
                 MovieListingActivity.this, movieList,
-                R.layout.list_item, new String[]{KEY_MOVIE_ID, KEY_MOVIE_NAME},
-                new int[]{R.id.movieId, R.id.movieName});
+                R.layout.list_item, new String[]{KEY_MOVIE_ID, KEY_MOVIE_NAME, KEY_MOVIE_GENRE},
+                new int[]{R.id.movieId, R.id.movieName, R.id.movieGenre});
         // updating listview
         movieListView.setAdapter(adapter);
     }
@@ -98,9 +98,11 @@ public class MovieListingActivity extends AppCompatActivity {
                         JSONObject movie = movies.getJSONObject(i);
                         Integer movieId = movie.getInt(KEY_MOVIE_ID);
                         String movieName = movie.getString(KEY_MOVIE_NAME);
+                        String movieGenre = movie.getString(KEY_MOVIE_GENRE);
                         HashMap<String, String> map = new HashMap<String, String>();
                         map.put(KEY_MOVIE_ID, movieId.toString());
                         map.put(KEY_MOVIE_NAME, movieName);
+                        map.put(KEY_MOVIE_GENRE, movieGenre);
                         movieList.add(map);
                     }
                 }
