@@ -25,10 +25,10 @@ import java.util.HashMap;
 public class MovieListingActivity extends AppCompatActivity {
     private static final String KEY_SUCCESS = "success";
     private static final String KEY_DATA = "data";
-    private static final String KEY_MOVIE_ID = "movie_id";
-    private static final String KEY_MOVIE_NAME = "movie_name";
-    private static final String KEY_MOVIE_GENRE = "genre";
-    private static final String BASE_URL = "http://192.168.0.169/movies/";
+    private static final String KEY_MOVIE_ID = "player_id";
+    private static final String KEY_MOVIE_NAME = "name";
+    private static final String KEY_MOVIE_GENRE = "age";
+    private static final String BASE_URL = "http://192.168.0.169/quizapp/";
     private ArrayList<HashMap<String, String>> movieList;
     private ListView movieListView;
     private ProgressDialog pDialog;
@@ -86,7 +86,7 @@ public class MovieListingActivity extends AppCompatActivity {
         protected String doInBackground(String... params) {
             HttpJsonParser httpJsonParser = new HttpJsonParser();
             JSONObject jsonObject = httpJsonParser.makeHttpRequest(
-                    BASE_URL + "fetch_all_movies.php", "GET", null);
+                    BASE_URL + "display_players2.php", "GET", null);
             try {
                 int success = jsonObject.getInt(KEY_SUCCESS);
                 JSONArray movies;
