@@ -242,12 +242,6 @@
 
         <View style="@style/separationBar"></View>
 
-        <CheckBox
-            android:id="@+id/shareCheckbox"
-            style="@style/CheckBoxStyle"
-            android:onClick="shareResults"
-            android:text="@string/share" />
-
         <Button
             android:id="@+id/checkResults"
             style="@style/ButtonStyle"
@@ -255,6 +249,18 @@
             android:layout_marginTop="@dimen/marginRadio"
             android:onClick="checkResults"
             android:text="@string/ShowResults" />
+
+        <Button
+            android:id="@+id/SendData"
+            style="@style/ButtonStyle"
+            android:layout_marginBottom="@dimen/marginRadio"
+            android:text="@string/shareResult" />
+
+        <Button
+            android:id="@+id/playerListing"
+            style="@style/ButtonStyle"
+            android:layout_marginBottom="@dimen/marginRadio"
+            android:text="@string/PlayerListing" />
 
         <Button
             style="@style/ButtonStyle"

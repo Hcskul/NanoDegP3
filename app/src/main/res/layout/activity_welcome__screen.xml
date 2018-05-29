@@ -60,15 +60,6 @@
             style="@style/ButtonStyle"
             android:text="@string/proceedingButton" />
 
-        <Button
-            android:id="@+id/TestConnection"
-            style="@style/ButtonStyle"
-            android:text="Test Connection" />
-
-        <Button
-            android:id="@+id/SendData"
-            style="@style/ButtonStyle"
-            android:text="Send Data" />
 
     </LinearLayout>
 </ScrollView>

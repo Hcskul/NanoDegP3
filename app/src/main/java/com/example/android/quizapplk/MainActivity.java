@@ -1,8 +1,9 @@
 package com.example.android.quizapplk;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.media.MediaPlayer;
-import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -15,10 +16,27 @@ import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.example.android.quizapplk.helper.CheckNetworkStatus;
+import com.example.android.quizapplk.helper.HttpJsonParser;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
 
-    private boolean share = false;
+    private static final String KEY_SUCCESS = "success";
+    private static final String KEY_NAME = "name";
+    private static final String KEY_AGE = "age";
+    private static final String KEY_POINTS = "points";
+    private static final String BASE_URL = "http://192.168.0.169/quizapp/";
+    private static String STRING_EMPTY = "";
+    private String playerName;
+    private String playerAge;
+    private String points;
+    private int success;
+    private ProgressDialog pDialog;
 
     @Override
     public void onBackPressed() {
@@ -30,14 +48,47 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        Button viewAllBtn = (Button) findViewById(R.id.playerListing);
+        viewAllBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //Check for network connectivity
+                if (CheckNetworkStatus.isNetworkAvailable(getApplicationContext())) {
+                    Intent i = new Intent(getApplicationContext(),
+                            PlayerListingActivity.class);
+                    startActivity(i);
+                } else {
+                    //Display error message if not connected to internet
+                    Toast.makeText(MainActivity.this, "Unable to connect to internet", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+        Button addNewBtn = (Button) findViewById(R.id.SendData);
+        addNewBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //Check for network connectivity
+                if (CheckNetworkStatus.isNetworkAvailable(getApplicationContext())) {
+                    addPlayer();
+                } else {
+                    //Display error message if not connected to internet
+                    Toast.makeText(MainActivity.this, "Unable to connect to internet", Toast.LENGTH_LONG).show();
+                }
+            }
+        });
     }
 
-    /*
-    Methode to hear the toccata.mp3
+    /**
+     * Checks whether all files are filled. If so then calls AddPlayerAsyncTask.
+     * Otherwise displays Toast message informing one or more fields left empty
      */
-    public void onClick(View v) {
-        final MediaPlayer mp = MediaPlayer.create(this, R.raw.toccata);
-        mp.start();
+    public void addPlayer() {
+        String playerName = Welcome_Screen.name;
+        String playerAge = Welcome_Screen.age;
+        String points = Welcome_Screen.age;
+
+        new AddPlayerAsyncTask().execute();
     }
 
     /*
@@ -99,37 +150,69 @@ public class MainActivity extends AppCompatActivity {
 
         // Checks if the player wants to share his or her results
         String finalMessage = getResources().getString(R.string.finalString, Welcome_Screen.name, finalScore);
-
-        if (share) {
-            Intent intent = new Intent(Intent.ACTION_SENDTO);
-            intent.setData(Uri.parse("mailto:"));
-            intent.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.emailSubject) + Welcome_Screen.name);
-            intent.putExtra(Intent.EXTRA_TEXT, finalMessage);
-            if (intent.resolveActivity(getPackageManager()) != null) {
-                startActivity(intent);
-            }
-
-        } else {
-            Toast.makeText(this, finalMessage, Toast.LENGTH_SHORT).show();
-        }
+        Toast.makeText(this, finalMessage, Toast.LENGTH_SHORT).show();
     }
 
     /*
-    methode to change the behavior to check/share the results
+    Methode to hear the toccata.mp3
      */
+    public void onClick(View v) {
+        final MediaPlayer mp = MediaPlayer.create(this, R.raw.toccata);
+        mp.start();
+    }
 
-    public void shareResults(View v) {
-        CheckBox statusShare = (CheckBox) findViewById(R.id.shareCheckbox);
-        boolean shareCheckbox = statusShare.isChecked();
+    /**
+     * AsyncTask for adding a player
+     */
+    private class AddPlayerAsyncTask extends AsyncTask<String, String, String> {
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            //Display proggress bar
+            pDialog = new ProgressDialog(MainActivity.this);
+            pDialog.setMessage("Adding Player. Please wait...");
+            pDialog.setIndeterminate(false);
+            pDialog.setCancelable(false);
+            pDialog.show();
+        }
 
-        if (shareCheckbox) {
-            Button shareAndSee = (Button) findViewById(R.id.checkResults);
-            shareAndSee.setText(R.string.ShareResults);
-            share = true;
-        } else {
-            Button shareAndSee = (Button) findViewById(R.id.checkResults);
-            shareAndSee.setText(R.string.ShowResults);
-            share = false;
+        @Override
+        protected String doInBackground(String... params) {
+            HttpJsonParser httpJsonParser = new HttpJsonParser();
+            Map<String, String> httpParams = new HashMap<>();
+            //Populating request parameters
+            httpParams.put(KEY_NAME, playerName);
+            httpParams.put(KEY_AGE, playerAge);
+            httpParams.put(KEY_POINTS, points);
+            JSONObject jsonObject = httpJsonParser.makeHttpRequest(BASE_URL + "add_player.php", "POST", httpParams);
+            try {
+                success = jsonObject.getInt(KEY_SUCCESS);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
+
+        protected void onPostExecute(String result) {
+            pDialog.dismiss();
+            runOnUiThread(new Runnable() {
+                public void run() {
+                    if (success == 1) {
+                        //Display success message
+                        Toast.makeText(MainActivity.this,
+                                "Player Added", Toast.LENGTH_LONG).show();
+                        Intent i = getIntent();
+                        //send result code 20 to notify about player update
+                        setResult(20, i);
+
+                    } else {
+                        Toast.makeText(MainActivity.this,
+                                "Some error occurred while adding the player",
+                                Toast.LENGTH_LONG).show();
+
+                    }
+                }
+            });
         }
     }
 
@@ -159,9 +242,6 @@ public class MainActivity extends AppCompatActivity {
         eighthQestionAnswerTwo.setChecked(false);
         CheckBox eighthQestionAnswerThree = (CheckBox) findViewById(R.id.quiz8Answer3);
         eighthQestionAnswerThree.setChecked(false);
-
-        CheckBox shareCheckbox = (CheckBox) findViewById(R.id.shareCheckbox);
-        shareCheckbox.setChecked(false);
 
         Toast.makeText(this, R.string.scoreReset, Toast.LENGTH_SHORT).show();
 

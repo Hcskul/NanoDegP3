@@ -116,9 +116,6 @@
     <!-- Text for the result button if the user don't want to share it [CHAR LIMIT=15] -->
     <string name="ShowResults">Check your results</string>
 
-    <!-- Text for the result button if the user want to share it [CHAR LIMIT=15] -->
-    <string name="ShareResults">Share your results</string>
-
     <!-- Text for the share CheckBox [CHAR LIMIT=15] -->
     <string name="share">Share your score</string>
 
@@ -139,6 +136,12 @@
 
     <!-- Text for the subject of the E-Mail  [CHAR LIMIT=25] -->
     <string name="emailSubject">Leipzig quiz from\ </string>
+
+    <!-- Text for the Share your Rersult button  [CHAR LIMIT=25] -->
+    <string name="shareResult">Share your result </string>
+
+    <!-- Text for the playerListing Activity  [CHAR LIMIT=25] -->
+    <string name="PlayerListing">Show all results </string>
 
     <!-- Text for the reset of the app  [CHAR LIMIT=25] -->
     <string name="scoreReset">App successfully resetted. </string>
