@@ -254,6 +254,7 @@
             android:id="@+id/SendData"
             style="@style/ButtonStyle"
             android:layout_marginBottom="@dimen/marginRadio"
+            android:onClick="checkResults"
             android:text="@string/shareResult" />
 
         <Button

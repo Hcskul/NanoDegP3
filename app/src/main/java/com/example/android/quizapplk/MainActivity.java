@@ -32,11 +32,10 @@ public class MainActivity extends AppCompatActivity {
     private static final String KEY_POINTS = "points";
     private static final String BASE_URL = "http://192.168.0.169/quizapp/";
     private static String STRING_EMPTY = "";
-    private String playerName;
-    private String playerAge;
-    private String points;
     private int success;
     private ProgressDialog pDialog;
+
+    public static int finalScore = 0;
 
     @Override
     public void onBackPressed() {
@@ -70,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 //Check for network connectivity
                 if (CheckNetworkStatus.isNetworkAvailable(getApplicationContext())) {
-                    addPlayer();
+                    new AddPlayerAsyncTask().execute();
                 } else {
                     //Display error message if not connected to internet
                     Toast.makeText(MainActivity.this, "Unable to connect to internet", Toast.LENGTH_LONG).show();
@@ -79,23 +78,11 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    /**
-     * Checks whether all files are filled. If so then calls AddPlayerAsyncTask.
-     * Otherwise displays Toast message informing one or more fields left empty
-     */
-    public void addPlayer() {
-        String playerName = Welcome_Screen.name;
-        String playerAge = Welcome_Screen.age;
-        String points = Welcome_Screen.age;
-
-        new AddPlayerAsyncTask().execute();
-    }
-
     /*
     method to check the results
     */
     public void checkResults(View v) {
-        int finalScore = 0;
+        finalScore = 0;
         RadioButton right1 = (RadioButton) findViewById(R.id.quiz1Answer2);
         RadioButton right2 = (RadioButton) findViewById(R.id.quiz2Answer2);
         RadioButton right3 = (RadioButton) findViewById(R.id.quiz4Answer2);
@@ -147,8 +134,6 @@ public class MainActivity extends AppCompatActivity {
         if (isRight1 && !isWrong && isRight2) {
             finalScore++;
         }
-
-        // Checks if the player wants to share his or her results
         String finalMessage = getResources().getString(R.string.finalString, Welcome_Screen.name, finalScore);
         Toast.makeText(this, finalMessage, Toast.LENGTH_SHORT).show();
     }
@@ -178,6 +163,10 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         protected String doInBackground(String... params) {
+            String playerName = Welcome_Screen.name;
+            String playerAge = Welcome_Screen.age;
+            String points = String.valueOf(finalScore);
+
             HttpJsonParser httpJsonParser = new HttpJsonParser();
             Map<String, String> httpParams = new HashMap<>();
             //Populating request parameters
@@ -219,7 +208,6 @@ public class MainActivity extends AppCompatActivity {
     /*
     method to reset everything in the app
      */
-
     public void resetButtons(View v) {
         EditText numberGuests = (EditText) findViewById(R.id.guessGuestsChristmasmarket);
         numberGuests.setText("");
@@ -244,8 +232,5 @@ public class MainActivity extends AppCompatActivity {
         eighthQestionAnswerThree.setChecked(false);
 
         Toast.makeText(this, R.string.scoreReset, Toast.LENGTH_SHORT).show();
-
-
     }
-
 }
