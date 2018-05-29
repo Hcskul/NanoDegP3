@@ -52,7 +52,7 @@ public class Welcome_Screen extends AppCompatActivity {
                 //Check for network connectivity
                 if (CheckNetworkStatus.isNetworkAvailable(getApplicationContext())) {
                     Intent i = new Intent(getApplicationContext(),
-                            MovieListingActivity.class);
+                            PlayerListingActivity.class);
                     startActivity(i);
                 } else {
                     //Display error message if not connected to internet

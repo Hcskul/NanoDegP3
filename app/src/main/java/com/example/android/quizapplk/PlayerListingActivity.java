@@ -9,10 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
-import android.widget.TextView;
-import android.widget.Toast;
 
-import com.example.android.quizapplk.helper.CheckNetworkStatus;
 import com.example.android.quizapplk.helper.HttpJsonParser;
 
 import org.json.JSONArray;
@@ -22,36 +19,36 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class MovieListingActivity extends AppCompatActivity {
+public class PlayerListingActivity extends AppCompatActivity {
     private static final String KEY_SUCCESS = "success";
     private static final String KEY_DATA = "data";
-    private static final String KEY_PLAYER_ID = "name";
-    private static final String KEY_NAME = "age";
-    private static final String KEY_MOVIE_GENRE = "points";
+    private static final String KEY_NAME = "name";
+    private static final String KEY_AGE = "age";
+    private static final String KEY_POINTS = "points";
     private static final String BASE_URL = "http://192.168.0.169/quizapp/";
-    private ArrayList<HashMap<String, String>> movieList;
-    private ListView movieListView;
+    private ArrayList<HashMap<String, String>> playerList;
+    private ListView playerListView;
     private ProgressDialog pDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_movie_listing);
-        movieListView = (ListView) findViewById(R.id.movieList);
-        new FetchMoviesAsyncTask().execute();
+        setContentView(R.layout.activity_player_listing);
+        playerListView = (ListView) findViewById(R.id.playerList);
+        new FetchPlayersAsyncTask().execute();
 
     }
 
     /**
      * Updating parsed JSON data into ListView
      */
-    private void populateMovieList() {
+    private void populatePlayerList() {
         ListAdapter adapter = new SimpleAdapter(
-                MovieListingActivity.this, movieList,
-                R.layout.list_item, new String[]{KEY_PLAYER_ID, KEY_NAME, KEY_MOVIE_GENRE},
-                new int[]{R.id.movieId, R.id.movieName, R.id.movieGenre});
+                PlayerListingActivity.this, playerList,
+                R.layout.list_item, new String[]{KEY_NAME, KEY_AGE, KEY_POINTS},
+                new int[]{R.id.playerName, R.id.playerAge, R.id.playerPoints});
         // updating listview
-        movieListView.setAdapter(adapter);
+        playerListView.setAdapter(adapter);
     }
 
     @Override
@@ -59,8 +56,8 @@ public class MovieListingActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == 20) {
             // If the result code is 20 that means that
-            // the user has deleted/updated the movie.
-            // So refresh the movie listing
+            // the user has deleted/updated the player.
+            // So refresh the player listing
             Intent intent = getIntent();
             finish();
             startActivity(intent);
@@ -68,15 +65,15 @@ public class MovieListingActivity extends AppCompatActivity {
     }
 
     /**
-     * Fetches the list of movies from the server
+     * Fetches the list of player from the server
      */
-    private class FetchMoviesAsyncTask extends AsyncTask<String, String, String> {
+    private class FetchPlayersAsyncTask extends AsyncTask<String, String, String> {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
             //Display progress bar
-            pDialog = new ProgressDialog(MovieListingActivity.this);
-            pDialog.setMessage("Loading movies. Please wait...");
+            pDialog = new ProgressDialog(PlayerListingActivity.this);
+            pDialog.setMessage("Loading stats. Please wait...");
             pDialog.setIndeterminate(false);
             pDialog.setCancelable(false);
             pDialog.show();
@@ -89,21 +86,21 @@ public class MovieListingActivity extends AppCompatActivity {
                     BASE_URL + "display_players.php", "GET", null);
             try {
                 int success = jsonObject.getInt(KEY_SUCCESS);
-                JSONArray movies;
+                JSONArray players;
                 if (success == 1) {
-                    movieList = new ArrayList<>();
-                    movies = jsonObject.getJSONArray(KEY_DATA);
-                    //Iterate through the response and populate movies list
-                    for (int i = 0; i < movies.length(); i++) {
-                        JSONObject movie = movies.getJSONObject(i);
-                        String movieId = movie.getString(KEY_PLAYER_ID);
-                        Integer movieName = movie.getInt(KEY_NAME);
-                        Integer movieGenre = movie.getInt(KEY_MOVIE_GENRE);
+                    playerList = new ArrayList<>();
+                    players = jsonObject.getJSONArray(KEY_DATA);
+                    //Iterate through the response and populate players list
+                    for (int i = 0; i < players.length(); i++) {
+                        JSONObject playerJson = players.getJSONObject(i);
+                        String playerName = playerJson.getString(KEY_NAME);
+                        Integer playerAge = playerJson.getInt(KEY_AGE);
+                        Integer playerPoints = playerJson.getInt(KEY_POINTS);
                         HashMap<String, String> map = new HashMap<String, String>();
-                        map.put(KEY_PLAYER_ID, movieId);
-                        map.put(KEY_NAME, movieName.toString());
-                        map.put(KEY_MOVIE_GENRE, movieGenre.toString());
-                        movieList.add(map);
+                        map.put(KEY_NAME, playerName);
+                        map.put(KEY_AGE, playerAge.toString());
+                        map.put(KEY_POINTS, playerPoints.toString());
+                        playerList.add(map);
                     }
                 }
             } catch (JSONException e) {
@@ -116,7 +113,7 @@ public class MovieListingActivity extends AppCompatActivity {
             pDialog.dismiss();
             runOnUiThread(new Runnable() {
                 public void run() {
-                    populateMovieList();
+                    populatePlayerList();
                 }
             });
         }

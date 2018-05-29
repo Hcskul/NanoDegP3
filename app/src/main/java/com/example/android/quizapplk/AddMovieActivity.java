@@ -24,17 +24,14 @@ public class AddMovieActivity extends AppCompatActivity {
     private static final String KEY_MOVIE_NAME = "movie_name";
     private static final String KEY_GENRE = "genre";
     private static final String KEY_YEAR = "year";
-    private static final String KEY_RATING = "rating";
     private static final String BASE_URL = "http://192.168.0.169/movies/";
     private static String STRING_EMPTY = "";
     private EditText movieNameEditText;
     private EditText genreEditText;
     private EditText yearEditText;
-    private EditText ratingEditText;
     private String movieName;
     private String genre;
     private String year;
-    private String rating;
     private Button addButton;
     private int success;
     private ProgressDialog pDialog;
@@ -46,7 +43,6 @@ public class AddMovieActivity extends AppCompatActivity {
         movieNameEditText = (EditText) findViewById(R.id.nameInput);
         genreEditText = (EditText) findViewById(R.id.nameInput);
         yearEditText = (EditText) findViewById(R.id.ageInput);
-        ratingEditText = (EditText) findViewById(R.id.ageInput);
         addButton = (Button) findViewById(R.id.SendData);
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -72,13 +68,12 @@ public class AddMovieActivity extends AppCompatActivity {
     private void addMovie() {
         if (!STRING_EMPTY.equals(movieNameEditText.getText().toString()) &&
                 !STRING_EMPTY.equals(genreEditText.getText().toString()) &&
-                !STRING_EMPTY.equals(yearEditText.getText().toString()) &&
-                !STRING_EMPTY.equals(ratingEditText.getText().toString())) {
+                !STRING_EMPTY.equals(yearEditText.getText().toString())) {
 
             movieName = movieNameEditText.getText().toString();
             genre = genreEditText.getText().toString();
             year = yearEditText.getText().toString();
-            rating = ratingEditText.getText().toString();
+
             new AddMovieAsyncTask().execute();
         } else {
             Toast.makeText(AddMovieActivity.this,
@@ -111,7 +106,6 @@ public class AddMovieActivity extends AppCompatActivity {
             httpParams.put(KEY_MOVIE_NAME, movieName);
             httpParams.put(KEY_GENRE, genre);
             httpParams.put(KEY_YEAR, year);
-            httpParams.put(KEY_RATING, rating);
             JSONObject jsonObject = httpJsonParser.makeHttpRequest(
                     BASE_URL + "add_movie.php", "POST", httpParams);
             try {
