@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#eee"
-    tools:context="com.example.android.quizapplk.MovieListingActivity">
+    tools:context="com.example.android.quizapplk.PlayerListingActivity">
 
     <ListView
         android:id="@+id/playerList"

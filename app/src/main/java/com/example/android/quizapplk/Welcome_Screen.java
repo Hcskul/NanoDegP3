@@ -1,18 +1,42 @@
 package com.example.android.quizapplk;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.android.quizapplk.helper.CheckNetworkStatus;
+import com.example.android.quizapplk.helper.HttpJsonParser;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class Welcome_Screen extends AppCompatActivity {
+
+    private static final String KEY_SUCCESS = "success";
+    private static final String KEY_NAME = "movie_name";
+    private static final String KEY_AGE = "genre";
+    private static final String KEY_POINTS = "year";
+    private static final String BASE_URL = "http://192.168.0.169/movies/";
+    private static String STRING_EMPTY = "";
+    private EditText playerNameEditText;
+    private EditText ageEditText;
+    private EditText scoreEditText;
+    private String playerName;
+    private String playerAge;
+    private String points;
+    private int success;
+    private ProgressDialog pDialog;
+
     public static String name;
     public static String age;
 
@@ -68,14 +92,93 @@ public class Welcome_Screen extends AppCompatActivity {
             public void onClick(View view) {
                 //Check for network connectivity
                 if (CheckNetworkStatus.isNetworkAvailable(getApplicationContext())) {
-                    Intent i = new Intent(getApplicationContext(),
-                            AddMovieActivity.class);
-                    startActivity(i);
+                    addMovie();
                 } else {
                     //Display error message if not connected to internet
                     Toast.makeText(Welcome_Screen.this, "Unable to connect to internet", Toast.LENGTH_LONG).show();
                 }
             }
         });
+    }
+
+    /**
+     * Checks whether all files are filled. If so then calls AddMovieAsyncTask.
+     * Otherwise displays Toast message informing one or more fields left empty
+     */
+    public void addMovie() {
+        playerNameEditText = (EditText) findViewById(R.id.nameInput);
+        ageEditText = (EditText) findViewById(R.id.ageInput);
+        scoreEditText = (EditText) findViewById(R.id.ageInput);
+
+        if (!STRING_EMPTY.equals(playerNameEditText.getText().toString()) &&
+                !STRING_EMPTY.equals(ageEditText.getText().toString()) &&
+                !STRING_EMPTY.equals(scoreEditText.getText().toString())) {
+
+            playerName = playerNameEditText.getText().toString();
+            playerAge = ageEditText.getText().toString();
+            points = scoreEditText.getText().toString();
+
+            new AddMovieAsyncTask().execute();
+        } else {
+            Toast.makeText(Welcome_Screen.this,
+                    "One or more fields left empty!",
+                    Toast.LENGTH_LONG).show();
+
+        }
+    }
+
+    /**
+     * AsyncTask for adding a player
+     */
+    private class AddMovieAsyncTask extends AsyncTask<String, String, String> {
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            //Display proggress bar
+            pDialog = new ProgressDialog(Welcome_Screen.this);
+            pDialog.setMessage("Adding Player. Please wait...");
+            pDialog.setIndeterminate(false);
+            pDialog.setCancelable(false);
+            pDialog.show();
+        }
+
+        @Override
+        protected String doInBackground(String... params) {
+            HttpJsonParser httpJsonParser = new HttpJsonParser();
+            Map<String, String> httpParams = new HashMap<>();
+            //Populating request parameters
+            httpParams.put(KEY_NAME, playerName);
+            httpParams.put(KEY_AGE, playerAge);
+            httpParams.put(KEY_POINTS, points);
+            JSONObject jsonObject = httpJsonParser.makeHttpRequest(BASE_URL + "add_movie.php", "POST", httpParams);
+            try {
+                success = jsonObject.getInt(KEY_SUCCESS);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
+
+        protected void onPostExecute(String result) {
+            pDialog.dismiss();
+            runOnUiThread(new Runnable() {
+                public void run() {
+                    if (success == 1) {
+                        //Display success message
+                        Toast.makeText(Welcome_Screen.this,
+                                "Player Added", Toast.LENGTH_LONG).show();
+                        Intent i = getIntent();
+                        //send result code 20 to notify about player update
+                        setResult(20, i);
+
+                    } else {
+                        Toast.makeText(Welcome_Screen.this,
+                                "Some error occurred while adding the player",
+                                Toast.LENGTH_LONG).show();
+
+                    }
+                }
+            });
+        }
     }
 }
