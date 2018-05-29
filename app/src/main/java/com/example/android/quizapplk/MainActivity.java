@@ -138,8 +138,6 @@ public class MainActivity extends AppCompatActivity {
      */
 
     public void resetButtons(View v) {
-        EditText nameInput = (EditText) findViewById(R.id.nameInput);
-        nameInput.setText("");
         EditText numberGuests = (EditText) findViewById(R.id.guessGuestsChristmasmarket);
         numberGuests.setText("");
 

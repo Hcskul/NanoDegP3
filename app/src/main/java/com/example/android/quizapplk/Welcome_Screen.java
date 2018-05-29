@@ -23,10 +23,10 @@ import java.util.Map;
 public class Welcome_Screen extends AppCompatActivity {
 
     private static final String KEY_SUCCESS = "success";
-    private static final String KEY_NAME = "movie_name";
-    private static final String KEY_AGE = "genre";
-    private static final String KEY_POINTS = "year";
-    private static final String BASE_URL = "http://192.168.0.169/movies/";
+    private static final String KEY_NAME = "name";
+    private static final String KEY_AGE = "age";
+    private static final String KEY_POINTS = "points";
+    private static final String BASE_URL = "http://192.168.0.169/quizapp/";
     private static String STRING_EMPTY = "";
     private EditText playerNameEditText;
     private EditText ageEditText;
@@ -92,7 +92,7 @@ public class Welcome_Screen extends AppCompatActivity {
             public void onClick(View view) {
                 //Check for network connectivity
                 if (CheckNetworkStatus.isNetworkAvailable(getApplicationContext())) {
-                    addMovie();
+                    addPlayer();
                 } else {
                     //Display error message if not connected to internet
                     Toast.makeText(Welcome_Screen.this, "Unable to connect to internet", Toast.LENGTH_LONG).show();
@@ -102,10 +102,10 @@ public class Welcome_Screen extends AppCompatActivity {
     }
 
     /**
-     * Checks whether all files are filled. If so then calls AddMovieAsyncTask.
+     * Checks whether all files are filled. If so then calls AddPlayerAsyncTask.
      * Otherwise displays Toast message informing one or more fields left empty
      */
-    public void addMovie() {
+    public void addPlayer() {
         playerNameEditText = (EditText) findViewById(R.id.nameInput);
         ageEditText = (EditText) findViewById(R.id.ageInput);
         scoreEditText = (EditText) findViewById(R.id.ageInput);
@@ -118,7 +118,7 @@ public class Welcome_Screen extends AppCompatActivity {
             playerAge = ageEditText.getText().toString();
             points = scoreEditText.getText().toString();
 
-            new AddMovieAsyncTask().execute();
+            new AddPlayerAsyncTask().execute();
         } else {
             Toast.makeText(Welcome_Screen.this,
                     "One or more fields left empty!",
@@ -130,7 +130,7 @@ public class Welcome_Screen extends AppCompatActivity {
     /**
      * AsyncTask for adding a player
      */
-    private class AddMovieAsyncTask extends AsyncTask<String, String, String> {
+    private class AddPlayerAsyncTask extends AsyncTask<String, String, String> {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
@@ -150,7 +150,7 @@ public class Welcome_Screen extends AppCompatActivity {
             httpParams.put(KEY_NAME, playerName);
             httpParams.put(KEY_AGE, playerAge);
             httpParams.put(KEY_POINTS, points);
-            JSONObject jsonObject = httpJsonParser.makeHttpRequest(BASE_URL + "add_movie.php", "POST", httpParams);
+            JSONObject jsonObject = httpJsonParser.makeHttpRequest(BASE_URL + "add_player.php", "POST", httpParams);
             try {
                 success = jsonObject.getInt(KEY_SUCCESS);
             } catch (JSONException e) {
