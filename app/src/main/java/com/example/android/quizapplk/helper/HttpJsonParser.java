@@ -1,5 +1,11 @@
 package com.example.android.quizapplk.helper;
 
+import android.net.Uri;
+import android.util.Log;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -9,12 +15,6 @@ import java.net.HttpURLConnection;
 import java.net.ProtocolException;
 import java.net.URL;
 import java.util.Map;
-
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import android.net.Uri;
-import android.util.Log;
 
 public class HttpJsonParser {
 
@@ -39,14 +39,13 @@ public class HttpJsonParser {
             }
             if (builder.build().getEncodedQuery() != null) {
                 encodedParams = builder.build().getEncodedQuery();
-
             }
+
             if ("GET".equals(method)) {
                 url = url + "?" + encodedParams;
                 urlObj = new URL(url);
                 urlConnection = (HttpURLConnection) urlObj.openConnection();
                 urlConnection.setRequestMethod(method);
-
 
             } else {
                 urlObj = new URL(url);
@@ -57,7 +56,7 @@ public class HttpJsonParser {
                 urlConnection.getOutputStream().write(encodedParams.getBytes());
             }
 
-
+            // setting up the connection and closing it later
             urlConnection.connect();
             is = urlConnection.getInputStream();
             BufferedReader reader = new BufferedReader(new InputStreamReader(is));
@@ -66,11 +65,12 @@ public class HttpJsonParser {
             while ((line = reader.readLine()) != null) {
                 sb.append(line);
             }
+
             is.close();
             json = sb.toString();
             jObj = new JSONObject(json);
 
-
+            // catches the Json exceptions
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         } catch (ProtocolException e) {

@@ -3,6 +3,7 @@
     <dimen name="marginToScreen">4dp</dimen>
     <dimen name="marginToEditText">8dp</dimen>
     <dimen name="heightPictureBlazon">80dp</dimen>
+    <dimen name="widthPictureBlazon">100dp</dimen>
     <dimen name="marginRadio">10dp</dimen>
     <dimen name="heightQuestion">140dp</dimen>
     <dimen name="firstImageMarginRight">30dp</dimen>
@@ -10,4 +11,6 @@
     <dimen name="marginVerticalQuestion4">15dp</dimen>
     <dimen name="marginHorizontalQuestion4">50dp</dimen>
     <dimen name="paddingRightQuestion4">30dp</dimen>
+    <dimen name="dividerHeight">5dp</dimen>
+    <dimen name="marginWelcomeText">40dp</dimen>
 </resources>

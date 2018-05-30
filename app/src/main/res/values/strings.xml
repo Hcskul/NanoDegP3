@@ -1,6 +1,9 @@
 <resources>
-    <!-- Title for the application. [CHAR LIMIT=12] -->
+    <!-- Title for the MainActivity [CHAR LIMIT=12] -->
     <string name="app_name" translatable="false">Leipzig Quiz</string>
+
+    <!-- Title for the List Activity [CHAR LIMIT=12] -->
+    <string name="ResultsName">Results</string>
 
     <!-- Text for the welcome screen [CHAR LIMIT=25] -->
     <string name="inputName">Please enter your name:</string>
@@ -116,9 +119,6 @@
     <!-- Text for the result button if the user don't want to share it [CHAR LIMIT=15] -->
     <string name="ShowResults">Check your results</string>
 
-    <!-- Text for the share CheckBox [CHAR LIMIT=15] -->
-    <string name="share">Share your score</string>
-
     <!-- Text for the reset button [CHAR LIMIT=15] -->
     <string name="reset">Reset your score</string>
 
@@ -146,4 +146,24 @@
     <!-- Text for the reset of the app  [CHAR LIMIT=25] -->
     <string name="scoreReset">App successfully resetted. </string>
 
+    <!-- Text for disabled back press button  [CHAR LIMIT=25] -->
+    <string name="backPress">Back press disabled! </string>
+
+    <!-- Text for failed CheckNetworkStatus  [CHAR LIMIT=25] -->
+    <string name="NetworkStatus">Unable to connect to internet! </string>
+
+    <!-- Text for adding a player  [CHAR LIMIT=25] -->
+    <string name="AddPlayer">Adding Player. Please wait... </string>
+
+    <!-- Text for listing all the results  [CHAR LIMIT=25] -->
+    <string name="listResults">Loading results. Please wait... </string>
+
+    <!-- Text for succesfully added player  [CHAR LIMIT=25] -->
+    <string name="AddPlayerSuccess">Player Added successfully </string>
+
+    <!-- Text for failure whil adding the new player  [CHAR LIMIT=25] -->
+    <string name="AddPlayerFailure">Some error occurred while adding the player! </string>
+
+    <!-- Text for alerting the user when the result is shared twice  [CHAR LIMIT=25] -->
+    <string name="alreadyShared">Your score has been shared previously! </string>
 </resources>

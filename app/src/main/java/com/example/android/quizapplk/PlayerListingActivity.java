@@ -9,7 +9,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
-import android.widget.Toast;
 
 import com.example.android.quizapplk.helper.HttpJsonParser;
 
@@ -21,6 +20,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class PlayerListingActivity extends AppCompatActivity {
+    // KEYs have to match to the PHP script and to the SQL database on the server
     private static final String KEY_SUCCESS = "success";
     private static final String KEY_DATA = "data";
     private static final String KEY_NAME = "name";
@@ -41,9 +41,8 @@ public class PlayerListingActivity extends AppCompatActivity {
 
     }
 
-    /**
-     * Updating parsed JSON data into ListView
-     */
+
+    // Updating parsed JSON data into ListView
     private void populatePlayerList() {
         ListAdapter adapter = new SimpleAdapter(
                 PlayerListingActivity.this, playerList,
@@ -56,31 +55,22 @@ public class PlayerListingActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode == 20) {
-            // If the result code is 20 that means that
-            // the user has deleted/updated the player.
-            // So refresh the player listing
-            Intent intent = getIntent();
-            finish();
-            startActivity(intent);
-        }
     }
 
-    /**
-     * Fetches the list of player from the server
-     */
+    //Fetches the list of player from the server
     private class FetchPlayersAsyncTask extends AsyncTask<String, String, String> {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
             //Display progress bar
             pDialog = new ProgressDialog(PlayerListingActivity.this);
-            pDialog.setMessage("Loading stats. Please wait...");
+            pDialog.setMessage(PlayerListingActivity.this.getString(R.string.listResults));
             pDialog.setIndeterminate(false);
             pDialog.setCancelable(false);
             pDialog.show();
         }
 
+        // background task for the json parsing
         @Override
         protected String doInBackground(String... params) {
             HttpJsonParser httpJsonParser = new HttpJsonParser();
@@ -92,7 +82,7 @@ public class PlayerListingActivity extends AppCompatActivity {
                 if (success == 1) {
                     playerList = new ArrayList<>();
                     players = jsonObject.getJSONArray(KEY_DATA);
-                    //Iterate through the response and populate players list
+                    //Iterates through the response and populate players list
                     for (int i = 0; i < players.length(); i++) {
                         JSONObject playerJson = players.getJSONObject(i);
                         String playerName = playerJson.getString(KEY_NAME);

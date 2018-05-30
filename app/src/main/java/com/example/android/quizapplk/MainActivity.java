@@ -6,13 +6,11 @@ import android.media.MediaPlayer;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.example.android.quizapplk.helper.CheckNetworkStatus;
@@ -26,22 +24,25 @@ import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
 
+    // KEYs have to match to the PHP script and to the SQL database on the server
     private static final String KEY_SUCCESS = "success";
     private static final String KEY_NAME = "name";
     private static final String KEY_AGE = "age";
     private static final String KEY_POINTS = "points";
     private static final String BASE_URL = "http://192.168.0.169/quizapp/";
-    private static String STRING_EMPTY = "";
+    public static int finalScore = 0;
+    public static String test;
+    public static boolean isShared = false;
     private int success;
     private ProgressDialog pDialog;
 
-    public static int finalScore = 0;
-
+    //disable the back button
     @Override
     public void onBackPressed() {
-        Toast.makeText(getApplicationContext(), "Back press disabled!", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), R.string.backPress, Toast.LENGTH_SHORT).show();
     }
 
+    // Set two click Listeners on the Share and See Result Button when the Activity gets called
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
                     startActivity(i);
                 } else {
                     //Display error message if not connected to internet
-                    Toast.makeText(MainActivity.this, "Unable to connect to internet", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, R.string.NetworkStatus, Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -67,20 +68,24 @@ public class MainActivity extends AppCompatActivity {
         addNewBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //Check for network connectivity
-                if (CheckNetworkStatus.isNetworkAvailable(getApplicationContext())) {
+                //Check for network connectivity and if was already shared
+                if (CheckNetworkStatus.isNetworkAvailable(getApplicationContext()) && isShared) {
+                    Toast.makeText(MainActivity.this, R.string.alreadyShared, Toast.LENGTH_SHORT).show();
+                }
+                // sets the isShared boolean to true when it is first shared
+                if (CheckNetworkStatus.isNetworkAvailable(getApplicationContext()) && !isShared) {
                     new AddPlayerAsyncTask().execute();
-                } else {
+                    isShared = true;
+                }
+                if (!CheckNetworkStatus.isNetworkAvailable(getApplicationContext())) {
                     //Display error message if not connected to internet
-                    Toast.makeText(MainActivity.this, "Unable to connect to internet", Toast.LENGTH_LONG).show();
+                    Toast.makeText(MainActivity.this, R.string.NetworkStatus, Toast.LENGTH_SHORT).show();
                 }
             }
         });
     }
 
-    /*
-    method to check the results
-    */
+    //method to check the results
     public void checkResults(View v) {
         finalScore = 0;
         RadioButton right1 = (RadioButton) findViewById(R.id.quiz1Answer2);
@@ -109,8 +114,6 @@ public class MainActivity extends AppCompatActivity {
             finalScore++;
         }
 
-
-
         // Checks if the number of guests input is empty
         EditText numberGuests = (EditText) findViewById(R.id.guessGuestsChristmasmarket);
         String guestsString = numberGuests.getText().toString();
@@ -134,33 +137,42 @@ public class MainActivity extends AppCompatActivity {
         if (isRight1 && !isWrong && isRight2) {
             finalScore++;
         }
+
+        //creates final String for the results and shows it
         String finalMessage = getResources().getString(R.string.finalString, Welcome_Screen.name, finalScore);
         Toast.makeText(this, finalMessage, Toast.LENGTH_SHORT).show();
     }
 
-    /*
-    Methode to hear the toccata.mp3
-     */
+    //Methode to hear the toccata.mp3
+
     public void onClick(View v) {
         final MediaPlayer mp = MediaPlayer.create(this, R.raw.toccata);
         mp.start();
     }
 
-    /**
-     * AsyncTask for adding a player
-     */
+    //method to reset everything in the app
+    public void resetButtons(View v) {
+        isShared = false;
+        Toast.makeText(this, R.string.scoreReset, Toast.LENGTH_SHORT).show();
+        Intent resetIntent = new Intent(MainActivity.this, Welcome_Screen.class);
+        startActivity(resetIntent);
+    }
+
+    //AsyncTask for adding a player
     private class AddPlayerAsyncTask extends AsyncTask<String, String, String> {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            //Display proggress bar
+            //Display progress bar
             pDialog = new ProgressDialog(MainActivity.this);
-            pDialog.setMessage("Adding Player. Please wait...");
+            pDialog.setMessage(MainActivity.this.getString(R.string.AddPlayer));
             pDialog.setIndeterminate(false);
             pDialog.setCancelable(false);
             pDialog.show();
         }
 
+        // method to call when a new player wants to be set in the database --> calls PHP script with an static ip
+        // check if the server IP address is still the same before building the app
         @Override
         protected String doInBackground(String... params) {
             String playerName = Welcome_Screen.name;
@@ -182,55 +194,20 @@ public class MainActivity extends AppCompatActivity {
             return null;
         }
 
+        // method to call after the other tasks are done
         protected void onPostExecute(String result) {
             pDialog.dismiss();
             runOnUiThread(new Runnable() {
                 public void run() {
                     if (success == 1) {
                         //Display success message
-                        Toast.makeText(MainActivity.this,
-                                "Player Added", Toast.LENGTH_LONG).show();
-                        Intent i = getIntent();
-                        //send result code 20 to notify about player update
-                        setResult(20, i);
-
+                        Toast.makeText(MainActivity.this, R.string.AddPlayerSuccess, Toast.LENGTH_LONG).show();
                     } else {
-                        Toast.makeText(MainActivity.this,
-                                "Some error occurred while adding the player",
-                                Toast.LENGTH_LONG).show();
+                        Toast.makeText(MainActivity.this, R.string.AddPlayerFailure, Toast.LENGTH_LONG).show();
 
                     }
                 }
             });
         }
-    }
-
-    /*
-    method to reset everything in the app
-     */
-    public void resetButtons(View v) {
-        EditText numberGuests = (EditText) findViewById(R.id.guessGuestsChristmasmarket);
-        numberGuests.setText("");
-
-        RadioGroup firstQuestion = (RadioGroup) findViewById(R.id.radioGroupFirstQestion);
-        firstQuestion.clearCheck();
-        RadioGroup secondQuestion = (RadioGroup) findViewById(R.id.radioGroupSecondQestion);
-        secondQuestion.clearCheck();
-        RadioGroup fourthQuestion = (RadioGroup) findViewById(R.id.radioGroupFourthQestion);
-        fourthQuestion.clearCheck();
-        RadioGroup fifthQuestion = (RadioGroup) findViewById(R.id.radioGroupFifthQestion);
-        fifthQuestion.clearCheck();
-        RadioGroup sixthQuestion = (RadioGroup) findViewById(R.id.radioGroupSixthQestion);
-        sixthQuestion.clearCheck();
-        RadioGroup seventhQuestion = (RadioGroup) findViewById(R.id.radioGroupSeventhQestion);
-        seventhQuestion.clearCheck();
-        CheckBox eighthQestionAnswerOne = (CheckBox) findViewById(R.id.quiz8Answer1);
-        eighthQestionAnswerOne.setChecked(false);
-        CheckBox eighthQestionAnswerTwo = (CheckBox) findViewById(R.id.quiz8Answer2);
-        eighthQestionAnswerTwo.setChecked(false);
-        CheckBox eighthQestionAnswerThree = (CheckBox) findViewById(R.id.quiz8Answer3);
-        eighthQestionAnswerThree.setChecked(false);
-
-        Toast.makeText(this, R.string.scoreReset, Toast.LENGTH_SHORT).show();
     }
 }

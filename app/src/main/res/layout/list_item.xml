@@ -5,29 +5,27 @@
     android:orientation="horizontal">
 
     <TextView
-        android:id="@+id/playerName"
+        android:id="@+id/playerAge"
+        style="@style/ListItem"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:gravity="center" />
+        android:textSize="14sp" />
 
     <TextView
-        android:id="@+id/playerAge"
+        android:id="@+id/playerName"
+        style="@style/ListItem"
         android:layout_width="0dp"
-        android:layout_weight="2"
-        android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:textSize="18sp"
+        android:layout_weight="3"
         android:gravity="center"
+        android:textSize="18sp"
         android:textStyle="bold" />
 
     <TextView
         android:id="@+id/playerPoints"
+        style="@style/ListItem"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="2"
-        android:gravity="center"
-        android:padding="10dp"
+        android:layout_weight="3"
         android:textSize="18sp"
         android:textStyle="bold" />
 </LinearLayout>

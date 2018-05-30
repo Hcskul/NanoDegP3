@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="inputName">Bitte geben Sie Ihren Namen ein!</string>
+    <string name="inputName">Bitte geben Sie Ihren Namen ein:</string>
     <string name="welcomeText">Willkommen zur Leipzig Quiz App. Besuchen Sie diese wunderschöne Stadt einmal :)</string>
     <string name="question1">1. Wie hoch ist das größte Gebäude Leipzigs?</string>
     <string name="question2">2. Wann hat Napoleon die Völkerschlacht zu Leipzig verloren?</string>
@@ -21,10 +21,25 @@
     <string name="reset">Löschen Sie ihr Ergebnis</string>
     <string name="ShowResults">Ergebnis ansehen</string>
     <string name="ShareResults">Ergebnis teilen</string>
-    <string name="scoreReset">App erfolgreich zurückgesetzt</string>
+    <string name="scoreReset">App erfolgreich zurückgesetzt!</string>
     <string name="emailSubject">Leipzig Quiz von</string>
     <string name="errorEmptyName">Bitte geben Sie Ihren Namen ein!</string>
     <string name="errorEmptyGuests">Bitte geben Sie eine Antwort bei Frage 3 ein!</string>
     <string name="finalString">Herzlichen Glückwunsch %1$s\n Sie haben %2$d/8 Punkten erreicht!\n Verstehen Sie dieses Quiz als Einladung diese schöne Stadt zu besuchen :)</string>
     <string name="question8">8. Welche Flüsse fließen durch Leipzig?</string>
+    <string name="errorEmptyAge">Bitte geben Sie Ihr Alter ein</string>
+    <string name="shareResult">Ergebnis Teilen</string>
+    <string name="backPress">Zurück ist nicht möglich!</string>
+    <string name="PlayerListing">Alle Ergebnisse anzeigen</string>
+    <string name="NetworkStatus">Keine Internetverbindung!</string>
+    <string name="AddPlayerFailure">Ein Fehler ist aufgetreten!</string>
+    <string name="AddPlayerSuccess">Spieler erfolgreich hinzugefügt!</string>
+    <string name="AddPlayer">Spieler hinzufügen. Bitte warten...</string>
+    <string name="inputAgeEdit">Alter</string>
+    <string name="proceedingButton">Quiz starten</string>
+    <string name="inputAge">Bitte geben Sie ihr Alter ein:</string>
+    <string name="ResultsName">Ergebnisse</string>
+    <string name="inputNameEdit">Name</string>
+    <string name="alreadyShared">Ihre Punkte wurden bereits geteilt!</string>
+    <string name="listResults">Lädt Ergebnisse. Bitte warten...</string>
 </resources>

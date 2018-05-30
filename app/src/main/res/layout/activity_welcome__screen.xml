@@ -8,12 +8,14 @@
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="@dimen/marginToScreen"
         android:orientation="vertical">
 
         <ImageView
-            android:layout_width="100dp"
+            android:layout_width="@dimen/widthPictureBlazon"
             android:layout_height="@dimen/heightPictureBlazon"
             android:layout_gravity="center"
+            android:layout_margin="@dimen/marginRadio"
             android:scaleType="fitCenter"
             android:src="@drawable/wappen" />
 
@@ -21,10 +23,9 @@
             style="@style/welcomeText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/marginWelcomeText"
             android:gravity="center"
             android:text="@string/welcomeText" />
-
-        <View style="@style/separationBar" />
 
 
         <TextView
@@ -37,6 +38,7 @@
         <EditText
             android:id="@+id/nameInput"
             style="@style/EditTextStyle"
+            android:layout_marginBottom="@dimen/marginRadio"
             android:gravity="center"
             android:hint="@string/inputNameEdit"
             android:inputType="textCapWords" />
@@ -51,6 +53,7 @@
         <EditText
             android:id="@+id/ageInput"
             style="@style/EditTextStyle"
+            android:layout_marginBottom="@dimen/marginWelcomeText"
             android:gravity="center"
             android:hint="@string/inputAgeEdit"
             android:inputType="number" />
@@ -58,6 +61,7 @@
         <Button
             android:id="@+id/proceedingButton"
             style="@style/ButtonStyle"
+            android:layout_marginBottom="@dimen/marginRadio"
             android:text="@string/proceedingButton" />
 
 
